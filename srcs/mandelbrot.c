@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 10:56:02 by kangkim           #+#    #+#             */
-/*   Updated: 2022/01/13 18:41:06 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/01/14 00:31:40 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ int	mandelbrot(t_data *data, int w, int h, int iteration)
 	double	c_im;
 	double	temp_z_x;
 
-	z_x = data->center_xy.x + ((w / data->pixel) - (data->complex_xy.x / 2));
-	z_y = data->center_xy.y + ((h / data->pixel) - (data->complex_xy.y / 2));
-	c_re = z_x;
-	c_im = z_y;
+	z_x = 0;
+	z_y = 0;
+	c_re = data->center_xy.x + ((w / data->pixel) - (data->complex_xy.x / 2));
+	c_im = data->center_xy.y + ((h / data->pixel) - (data->complex_xy.y / 2));
 	while ((pow(z_x, 2.0) + pow(z_y, 2.0) < 4) && (iteration < ITERATION_MAX))
 	{
 		temp_z_x = pow(z_x, 2.0) - pow(z_y, 2.0) + c_re;

@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:04:33 by kangkim           #+#    #+#             */
-/*   Updated: 2022/01/13 18:45:08 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/01/14 10:14:05 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,10 @@ int	mouse_hook(int keycode, int x, int y, t_data *data)
 
 int	mouse_motion_hook(int x, int y, t_data *data)
 {
-	int	pixel;
-
 	if (data->fractal_func == julia && data->julia_fixed == -1)
 	{
-		pixel = data->pixel;
-		data->julia_const_xy.x = (x / pixel) - (data->complex_xy.x / 2);
-		data->julia_const_xy.y = -((y / pixel) - (data->complex_xy.y / 2));
+		data->julia_const_xy.x = (x / data->pixel) - (data->complex_xy.x / 2);
+		data->julia_const_xy.y = -((y / data->pixel) - (data->complex_xy.y / 2));
 		draw_fractal(data);
 	}
 	return (0);
