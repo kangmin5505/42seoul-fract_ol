@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:04:22 by kangkim           #+#    #+#             */
-/*   Updated: 2022/01/14 10:09:29 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/01/14 14:41:27 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ struct	s_data
 	char	fractal_name[12];
 	void	(*init_fractal_func)(t_data *);
 	int		(*fractal_func)(t_data *, int, int, int);
-	double	pixel;
-	t_point	center_xy;
-	t_point	complex_xy;
-	t_point	julia_const_xy;
-	int		julia_fixed;
-	t_point	mouse_xy;
+	double	ratio;
+	t_point	center;
+	t_point	plane_len;
+	t_point	julia_const;
+	int		julia_motion;
+	t_point	mouse;
 	t_color	color;
 };
 

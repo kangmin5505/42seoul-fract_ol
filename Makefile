@@ -6,7 +6,7 @@
 #    By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/10 15:04:57 by kangkim           #+#    #+#              #
-#    Updated: 2022/01/14 09:57:59 by kangkim          ###   ########.fr        #
+#    Updated: 2022/01/14 11:55:28 by kangkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,8 @@ vpath $.c $(SRCS_DIR)
 vpath $.h $(INCLUDES_DIR)
 
 all : $(NAME)
+
+bonus : all
 
 $(NAME) : $(OBJS) $(MLX)
 	$(CC) -O2 $(CFLAGS) $(LINK_MLX) -o $@ $^

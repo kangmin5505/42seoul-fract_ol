@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:04:33 by kangkim           #+#    #+#             */
-/*   Updated: 2022/01/14 10:14:05 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/01/14 15:00:42 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,37 +30,37 @@ int	mouse_hook(int keycode, int x, int y, t_data *data)
 {
 	if (keycode == SCROLL_UP || keycode == SCROLL_DOWN)
 	{
-		data->mouse_xy.x = (x / data->pixel) - (data->complex_xy.x / 2);
-		data->mouse_xy.y = -((y / data->pixel) - (data->complex_xy.y / 2));
+		data->mouse.x = (x / data->ratio) - (data->plane_len.x / 2);
+		data->mouse.y = (data->plane_len.y / 2) - (y / data->ratio);
 		if (keycode == SCROLL_UP)
 		{
-			data->center_xy.x += data->mouse_xy.x * (ZOOM_RATE - 1.0);
-			data->center_xy.y -= data->mouse_xy.y * (ZOOM_RATE - 1.0);
-			data->pixel *= ZOOM_RATE;
-			data->complex_xy.x /= ZOOM_RATE;
-			data->complex_xy.y /= ZOOM_RATE;
+			data->center.x += data->mouse.x * (ZOOM_RATE - 1.0);
+			data->center.y += data->mouse.y * (ZOOM_RATE - 1.0);
+			data->ratio *= ZOOM_RATE;
+			data->plane_len.x /= ZOOM_RATE;
+			data->plane_len.y /= ZOOM_RATE;
 		}
 		else if (keycode == SCROLL_DOWN)
 		{
-			data->center_xy.x -= data->mouse_xy.x * (ZOOM_RATE - 1.0);
-			data->center_xy.y += data->mouse_xy.y * (ZOOM_RATE - 1.0);
-			data->pixel /= ZOOM_RATE;
-			data->complex_xy.x *= ZOOM_RATE;
-			data->complex_xy.y *= ZOOM_RATE;
+			data->center.x -= data->mouse.x * (ZOOM_RATE - 1.0);
+			data->center.y -= data->mouse.y * (ZOOM_RATE - 1.0);
+			data->ratio /= ZOOM_RATE;
+			data->plane_len.x *= ZOOM_RATE;
+			data->plane_len.y *= ZOOM_RATE;
 		}
 		draw_fractal(data);
 	}
 	else if (keycode == MOUSE_LEFT_BUTTON && data->fractal_func == julia)
-		data->julia_fixed *= -1;
+		data->julia_motion *= -1;
 	return (0);
 }
 
 int	mouse_motion_hook(int x, int y, t_data *data)
 {
-	if (data->fractal_func == julia && data->julia_fixed == -1)
+	if (data->fractal_func == julia && data->julia_motion == 1)
 	{
-		data->julia_const_xy.x = (x / data->pixel) - (data->complex_xy.x / 2);
-		data->julia_const_xy.y = -((y / data->pixel) - (data->complex_xy.y / 2));
+		data->julia_const.x = (x / data->ratio) - (data->plane_len.x / 2);
+		data->julia_const.y = (data->plane_len.y / 2) - (y / data->ratio);
 		draw_fractal(data);
 	}
 	return (0);
@@ -69,13 +69,13 @@ int	mouse_motion_hook(int x, int y, t_data *data)
 void	move_center(t_data *data, int keycode)
 {
 	if (keycode == KEY_LEFT)
-		data->center_xy.x -= data->complex_xy.x / 10;
+		data->center.x -= data->plane_len.x / 10;
 	else if (keycode == KEY_RIGHT)
-		data->center_xy.x += data->complex_xy.x / 10;
+		data->center.x += data->plane_len.x / 10;
 	else if (keycode == KEY_DOWN)
-		data->center_xy.y += data->complex_xy.y / 10;
+		data->center.y -= data->plane_len.y / 10;
 	else if (keycode == KEY_UP)
-		data->center_xy.y -= data->complex_xy.y / 10;
+		data->center.y += data->plane_len.y / 10;
 }
 
 void	destroy_data(t_data *data)
