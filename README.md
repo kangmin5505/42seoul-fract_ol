@@ -53,3 +53,21 @@ Here are some interesting ideas for the bonuses.
 - The zoom follows the actual mouse position.
 - In addition to the zoom: moving with the arrows.
 - Make the color range shift.
+
+## What I Learned
+- Computer graphics
+- Complex numbers, Complex plane
+- Optimization
+- miniLibX 사용법
+- Fractal
+
+### General Reviews
+fract_ol 과제는 computer graphics 기술을 사용하여 fractal 모형을 화면에 보이게 하는 것이 목표이다.\
+computer graphics란 기술을 처음 접해서 공부해야 할 내용이 많았다.\
+가장 기본적인 pixel의 개념과 pixel을 다루는 법, 색을 표현하는 방법 등 많은 것을 공부했다.\
+그리고 화면에 나타내는 fractal 모형에 대한 공부도 필요했다.\
+fractal 모형이란 모형의 전체가 부분과 완전히 똑같거나 비슷한 모양으로 반복되는 모형을 이야기한다.\
+fractal 모형을 이해하기 위해서는 복소수에 대해서 공부해야 됐고, 각각의 fractal 모형을 그리기 위한 식도 이해해야 됐다.\
+이 많은 것을 공부해서 프로그램을 완성하니 정말 뿌듯했다.\
+computer graphics 과제 중에 수학적인 개념이 필요한 과제라 가장 어렵다고 들어서, 이에 도전했는데 하길 잘했다고 생각했다.\
+내가 모르는 것이 많을수록 많이 배울 수 있다는 것을 머릿속에 심고 이후 과제도 열심히 해야겠다.
